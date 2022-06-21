@@ -48,7 +48,8 @@
                     android:id="@+id/imv_movie_icon"
                     android:layout_width="170dp"
                     android:layout_height="100dp"
-                    android:scaleType="fitXY" />
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/ic_non_thumbnail"/>
 
             </RelativeLayout>
         </androidx.cardview.widget.CardView>

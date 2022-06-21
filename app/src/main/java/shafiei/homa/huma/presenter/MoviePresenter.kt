@@ -1,74 +1,43 @@
-package shafiei.homa.huma.presenter;
+package shafiei.homa.huma.presenter
 
-import android.content.Context;
-import android.graphics.Color;
-import android.text.Html;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.bumptech.glide.Glide;
-import java.util.List;
-import java.util.Random;
-import shafiei.homa.huma.model.Movie;
-import shafiei.homa.huma.R;
-import shafiei.homa.huma.view.TvRecyclerview.Presenter;
-import shafiei.homa.huma.view.TvRecyclerview.RowItem;
+import android.content.Context
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
+import com.bumptech.glide.Glide
+import shafiei.homa.huma.R
+import shafiei.homa.huma.model.Movie
+import shafiei.homa.huma.view.TvRecyclerview.Presenter
+import shafiei.homa.huma.view.TvRecyclerview.RowItem
 
-public class MoviePresenter extends Presenter {
-
-    private final Context context;
-    private final List<Movie> newsList;
-
-    public MoviePresenter(Context context, List<Movie> news) {
-        super(context);
-        this.context = context;
-        this.newsList = news;
+class MoviePresenter(context: Context, private val newsList: List<Movie>) : Presenter(context) {
+    override fun onCreateView(): View {
+        return LayoutInflater.from(context).inflate(R.layout.row_movie, null)
     }
 
-    @Override
-    public View onCreateView() {
-        return LayoutInflater.from(getContext()).inflate(R.layout.row_movie, null);
+    override fun onBindViewHolder(viewHolder: ViewHolder, item: Any) {
+        val rowItem = item as RowItem
+        val title = viewHolder.view.findViewById<View>(R.id.tv_movie_title) as TextView
+        val desc = viewHolder.view.findViewById<View>(R.id.tv_movie_desc) as TextView
+        val icon = viewHolder.view.findViewById<View>(R.id.imv_movie_icon) as ImageView
+        title.text = newsList[rowItem.pos].title
+        desc.text = newsList[rowItem.pos].description
+        Glide.with(context)
+            .load(newsList[rowItem.pos].cardImageUrl)
+            .into(icon)
+        viewHolder.view.isSelected = true
+        viewHolder.view.isFocusable = true
+        val params = LinearLayout.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            1.0f
+        )
+        viewHolder.view.layoutParams = params
+        viewHolder.view.setOnClickListener {}
     }
 
-    @Override
-    public void onBindViewHolder(ViewHolder viewHolder, Object item) {
-        RowItem rowItem = (RowItem) item;
-        TextView title = (TextView) viewHolder.view.findViewById(R.id.tv_movie_title);
-        TextView desc = (TextView) viewHolder.view.findViewById(R.id.tv_movie_desc);
-        ImageView icon = (ImageView) viewHolder.view.findViewById(R.id.imv_movie_icon);
-        title.setText(newsList.get(rowItem.getPos()).getTitle());
-        desc.setText(Html.fromHtml(newsList.get(rowItem.getPos()).getDescription()).toString());
-        Glide.with(getContext())
-                .load(newsList.get(rowItem.getPos()).getCardImageUrl())
-                .into(icon);
-
-        viewHolder.view.setSelected(true);
-        viewHolder.view.setFocusable(true);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                1.0f
-        );
-        viewHolder.view.setLayoutParams(params);
-
-        viewHolder.view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });
-    }
-
-    @Override
-    public void onUnbindViewHolder(ViewHolder viewHolder) {
-
-    }
-
-    public static int getRandColor() {
-        Random random = new Random();
-        return Color.argb(255, random.nextInt(256), random.nextInt(256), random.nextInt(256));
-    }
-
+    override fun onUnbindViewHolder(viewHolder: ViewHolder) {}
 }

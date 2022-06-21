@@ -1,4 +1,4 @@
 <resources>
 
-    <style name="Theme.Huma" parent="@style/Theme.Leanback" />
+    <style name="Theme.Huma" parent="@style/Theme.AppCompat" />
 </resources>
