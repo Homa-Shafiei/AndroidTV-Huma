@@ -2,12 +2,12 @@ package shafiei.homa.huma.model
 
 object MovieList {
     val MOVIE_CATEGORY = arrayOf(
-        "Category Zero",
-        "Category One",
-        "Category Two",
-        "Category Three",
-        "Category Four",
-        "Category Five"
+        "جدیدترین ها",
+        "پربازدیدترین ها",
+        "محبوب ترین ها",
+        "دیده شده ها",
+        "در حال تماشا",
+        "پرفروش ترین ها"
     )
 
     val list: List<Movie> by lazy {

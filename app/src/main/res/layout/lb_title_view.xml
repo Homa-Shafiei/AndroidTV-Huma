@@ -1,0 +1,47 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView
+        android:id="@+id/title_badge"
+        style="?attr/browseTitleIconStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/lb_browse_title_icon_height"
+        android:layout_gravity="center_vertical|end"
+        android:adjustViewBounds="true"
+        android:maxWidth="@dimen/lb_browse_title_icon_max_width"
+        android:src="@null"
+        android:visibility="gone" />
+
+   <androidx.appcompat.widget.LinearLayoutCompat
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal"
+       android:layout_gravity="center_vertical|end">
+
+       <ImageView
+           android:id="@+id/icon"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_gravity="center"
+           android:src="@drawable/lb_ic_hq"
+           android:contentDescription="@string/orb_search_action" />
+
+       <TextView
+           android:id="@+id/title_text"
+           style="?attr/browseTitleTextStyle"
+           android:layout_width="wrap_content"
+           android:layout_height="match_parent"
+           android:layout_gravity="center|end" />
+
+
+   </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    <androidx.leanback.widget.SearchOrbView
+        android:id="@+id/title_orb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|start"
+        android:transitionGroup="true"
+        android:visibility="invisible" />
+
+</merge>

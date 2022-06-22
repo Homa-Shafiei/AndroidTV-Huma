@@ -2,10 +2,19 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/gridMovieFragment">
+    app:startDestination="@id/mainFragment">
 
     <fragment
         android:id="@+id/gridMovieFragment"
         android:name="shafiei.homa.huma.ui.GridMovieFragment"
         android:label="GridMovieFragment" />
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="shafiei.homa.huma.ui.MainFragment"
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_gridMovieFragment"
+            app:destination="@id/gridMovieFragment" />
+    </fragment>
 </navigation>

@@ -7,4 +7,13 @@
     <item name="tr_search_orb_focused_zoom" type="fraction">120%</item>
     <item name="tr_browse_header_select_duration" type="integer">150</item>
     <item name="tr_focus_animator" type="id"/>
+
+    <dimen name="poster_width">200dp</dimen>
+    <dimen name="poster_height">150dp</dimen>
+    <dimen name="lb_browse_headers_width">0dp</dimen>
+    <dimen name="lb_browse_rows_margin_start">0dp</dimen>
+    <dimen name="lb_browse_rows_margin_top">100dp</dimen>
+    <item name="lb_browse_rows_scale" type="fraction">95%</item>
+    <dimen name="lb_browse_title_text_size">20sp</dimen>
+    <dimen name="lb_search_orb_size">0dp</dimen>
 </resources>
